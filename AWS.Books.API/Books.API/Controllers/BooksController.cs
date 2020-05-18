@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using Books.API.Database;
 using Books.API.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Books.API.Controllers
@@ -12,41 +9,40 @@ namespace Books.API.Controllers
 	[ApiController]
 	public class BooksController : ControllerBase
 	{
-		private List<Book> _books = new List<Book>() {
-			new Book("isbn1", "title1", "description1"),
-			new Book("isbn2", "title2", "description1"),
-		};
+		private readonly IBookDal _bookDal;
 
-		// GET: api/Books
-		[HttpGet]
-		public IEnumerable<Book> Get()
+		public BooksController(IBookDal bookDal)
 		{
-			return _books;
+			_bookDal = bookDal;
 		}
 
 		// GET: api/Books/5
 		[HttpGet("{isbn}", Name = "Get")]
-		public Book Get(string isbn)
+		public async Task<Book> Get(string isbn)
 		{
-			return _books.FirstOrDefault(i => i.ISBN == isbn);
+			return await _bookDal.GetBook(isbn);
 		}
 
 		// POST: api/Books
 		[HttpPost]
-		public void Post([FromBody] Book value)
+		public async Task Post(Book value)
 		{
+			await _bookDal.CreateBook(value);
 		}
 
 		// PUT: api/Books/5
 		[HttpPut("{isbn}")]
-		public void Put(string isbn, [FromBody] Book value)
+		public async Task Put(string isbn, [FromBody] Book value)
 		{
+			value.ISBN = isbn;
+			await _bookDal.UpdateBook(value);
 		}
 
 		// DELETE: api/ApiWithActions/5
 		[HttpDelete("{isbn}")]
-		public void Delete(string isbn)
+		public async Task Delete(string isbn)
 		{
+			await _bookDal.DeleteBook(isbn);
 		}
 	}
 }
