@@ -1,6 +1,5 @@
 ﻿using Amazon.SQS;
 using Amazon.SQS.Model;
-using Books.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
