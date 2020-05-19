@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AWSSDK.Extensions.NETCore.Setup" Version="3.3.101" />
+    <PackageReference Include="AWSSDK.S3" Version="3.3.110.71" />
+    <PackageReference Include="AWSSDK.SQS" Version="3.3.102.112" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.4" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Books.BusinessLogic\Books.BusinessLogic.csproj" />
+    <ProjectReference Include="..\Books.Data.Contracts\Books.Data.Contracts.csproj" />
+    <ProjectReference Include="..\Books.Data\Books.Data.csproj" />
+  </ItemGroup>
+
+</Project>
