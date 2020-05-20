@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Books.API.Database;
-using Books.API.Models;
+using Books.BusinessLogic.Contracts;
+using Books.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Books.API.Controllers
@@ -9,25 +10,25 @@ namespace Books.API.Controllers
 	[ApiController]
 	public class BooksController : ControllerBase
 	{
-		private readonly IBookDal _bookDal;
+		private readonly IBookSevice _bookService;
 
-		public BooksController(IBookDal bookDal)
+		public BooksController(IBookSevice bookService)
 		{
-			_bookDal = bookDal;
+			_bookService = bookService;
 		}
 
 		// GET: api/Books/5
 		[HttpGet("{isbn}", Name = "Get")]
 		public async Task<Book> Get(string isbn)
 		{
-			return await _bookDal.GetBook(isbn);
+			return await _bookService.GetBook(isbn);
 		}
 
 		// POST: api/Books
 		[HttpPost]
 		public async Task Post(Book value)
 		{
-			await _bookDal.CreateBook(value);
+			await _bookService.CreateBook(value);
 		}
 
 		// PUT: api/Books/5
@@ -35,14 +36,14 @@ namespace Books.API.Controllers
 		public async Task Put(string isbn, [FromBody] Book value)
 		{
 			value.ISBN = isbn;
-			await _bookDal.UpdateBook(value);
+			await _bookService.UpdateBook(value);
 		}
 
 		// DELETE: api/ApiWithActions/5
 		[HttpDelete("{isbn}")]
 		public async Task Delete(string isbn)
 		{
-			await _bookDal.DeleteBook(isbn);
+			await _bookService.DeleteBook(isbn);
 		}
 	}
 }
