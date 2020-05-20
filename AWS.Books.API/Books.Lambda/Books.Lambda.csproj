@@ -12,7 +12,6 @@
     <PackageReference Include="AWSSDK.S3" Version="3.3.110.71" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Books.Models\Books.Contracts.csproj" />
     <ProjectReference Include="..\Books.Models\Books.Models.csproj" />
   </ItemGroup>
 </Project>
