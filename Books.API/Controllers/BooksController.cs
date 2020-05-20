@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using Books.API.Database;
 using Books.BusinessLogic.Contracts;
 using Books.Models;
@@ -19,9 +20,17 @@ namespace Books.API.Controllers
 
 		// GET: api/Books/5
 		[HttpGet("{isbn}", Name = "Get")]
-		public async Task<Book> Get(string isbn)
+		public async Task<ActionResult<Book>> Get(string isbn)
 		{
-			return await _bookService.GetBook(isbn);
+			try
+			{
+				return await _bookService.GetBook(isbn);
+			}
+			catch (Exception e)
+			{
+				return BadRequest(e);
+			}
+			
 		}
 
 		// POST: api/Books
