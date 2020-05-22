@@ -9,7 +9,7 @@
       "entryPoint": null,
       "portMappings": [
         {
-          "hostPort": 0,
+          "hostPort": 80,
           "protocol": "tcp",
           "containerPort": 80
         }
@@ -29,7 +29,7 @@
       "memoryReservation": null,
       "volumesFrom": [],
       "stopTimeout": null,
-      "image": "000536041767.dkr.ecr.us-east-2.amazonaws.com/books-erc-repo:841e6f0bff6b362d0d0d5a2028d67c5023d2de9a",
+      "image": "000536041767.dkr.ecr.us-east-2.amazonaws.com/books-erc-repo:4bec777ad3e894020ca01e92c077d239ba115682",
       "startTimeout": null,
       "firelensConfiguration": null,
       "dependsOn": null,
@@ -55,7 +55,7 @@
   "compatibilities": [
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-2:000536041767:task-definition/td-1:30",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-2:000536041767:task-definition/td-1:32",
   "family": "td-1",
   "requiresAttributes": [
     {
@@ -77,7 +77,7 @@
   ],
   "networkMode": "bridge",
   "cpu": null,
-  "revision": 30,
+  "revision": 32,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,
