@@ -9,7 +9,7 @@
       "entryPoint": null,
       "portMappings": [
         {
-          "hostPort": 80,
+          "hostPort": 0,
           "protocol": "tcp",
           "containerPort": 80
         }
@@ -55,7 +55,7 @@
   "compatibilities": [
     "EC2"
   ],
-  "taskDefinitionArn": "arn:aws:ecs:us-east-2:000536041767:task-definition/td-1:11",
+  "taskDefinitionArn": "arn:aws:ecs:us-east-2:000536041767:task-definition/td-1:15",
   "family": "td-1",
   "requiresAttributes": [
     {
@@ -77,7 +77,7 @@
   ],
   "networkMode": null,
   "cpu": null,
-  "revision": 11,
+  "revision": 15,
   "status": "ACTIVE",
   "inferenceAccelerators": null,
   "proxyConfiguration": null,

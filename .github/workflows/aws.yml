@@ -55,8 +55,9 @@ jobs:
         wait-for-service-stability: true
     - name: install Amazon.Lambda.Tools
       id: install-tools
-      run:
+      run: |
         dotnet tool install -g Amazon.Lambda.Tools
+        dotnet tool update -g Amazon.Lambda.Tools
     - name: Deploy Lambda
       id: deploy-lambda
       run:
