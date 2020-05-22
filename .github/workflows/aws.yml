@@ -54,3 +54,9 @@ jobs:
         service: service-6
         cluster: cluster-3
         wait-for-service-stability: true
+    - name: Deploy Lambda
+      id: deploy-lambda
+      run:
+        dotnet tool install -g Amazon.Lambda.Tools
+        dotnet lambda deploy-function --function-name upload-s3-storage-function
+    
