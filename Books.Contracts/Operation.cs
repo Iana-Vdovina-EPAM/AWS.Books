@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Books.Sqs
+namespace Books.Contracts
 {
-	public enum Operations
+	public enum Operation
 	{
 		Add = 1,
 		Remove = 2,

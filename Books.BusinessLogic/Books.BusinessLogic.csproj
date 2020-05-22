@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Books.BusinessLogic.Contracts\Books.BusinessLogic.Contracts.csproj" />
     <ProjectReference Include="..\Books.Data.Contracts\Books.Data.Contracts.csproj" />
+    <ProjectReference Include="..\Books.Exceptions\Books.Exceptions.csproj" />
     <ProjectReference Include="..\Books.Sqs\Books.Sqs.csproj" />
   </ItemGroup>
 

@@ -1,7 +1,5 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -10,8 +8,8 @@ using Amazon.Lambda.Core;
 using Amazon.Lambda.SQSEvents;
 using Amazon.S3;
 using Amazon.S3.Transfer;
-using Books.Models;
-using Microsoft.VisualBasic;
+using Books.Contracts;
+using Books.Lambda.Models;
 
 
 // Assembly attribute to enable the Lambda function's JSON input to be converted into a .NET class.
@@ -37,7 +35,6 @@ namespace Books.Lambda
 			s3Client = new AmazonS3Client(bucketRegion);
 		}
 
-
 		/// <summary>
 		/// This method is called for every Lambda invocation. This method takes in an SQS event object and can be used 
 		/// to respond to SQS messages.
@@ -58,12 +55,12 @@ namespace Books.Lambda
 			context.Logger.LogLine($"Processed message {message.Body}");
 
 			var body = JsonSerializer.Deserialize<Message>(message.Body);
-			switch (body.OperationId)
+			switch (body.Operation)
 			{
-				case (int)Operations.Add:
+				case Operation.Add:
 					await UploadFileAsync(body.Book);
 					break;
-				case (int)Operations.Remove:
+				case Operation.Remove:
 					await DeleteObjectNonVersionedBucketAsync(body.Book.ISBN);
 					break;
 				default:
@@ -111,18 +108,6 @@ namespace Books.Lambda
 			{
 				Console.WriteLine("Unknown encountered on server. Message:'{0}' when deleting an object", e.Message);
 			}
-		}
-
-		public class Message
-		{
-			public Book Book { get; set; }
-			public int OperationId { get; set; }
-		}
-
-		public enum Operations
-		{
-			Add = 1,
-			Remove = 2,
 		}
 	}
 }
