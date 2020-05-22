@@ -1,13 +1,10 @@
-﻿using Books.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Books.Contracts;
 
 namespace Books.Sqs.Provider
 {
 	public class AmazonSqsBookMessage
 	{
 		public Book Book { get; set; }
-		public int OperationId { get; set; }
+		public Operation Operation { get; set; }
 	}
 }

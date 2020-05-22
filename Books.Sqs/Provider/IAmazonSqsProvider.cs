@@ -1,5 +1,4 @@
-﻿using Books.Models;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
 namespace Books.Sqs.Provider

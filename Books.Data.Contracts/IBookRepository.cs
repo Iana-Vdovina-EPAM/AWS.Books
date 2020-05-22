@@ -1,4 +1,4 @@
-﻿using Books.Models;
+﻿using Books.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,10 +8,11 @@ namespace Books.API.Database
 {
 	public interface IBookRepository
 	{
-		Task<IEnumerable<Book>> GetBooks();
-		Task<Book> GetBook(string isbn);
-		Task CreateBook(Book book);
-		Task UpdateBook(Book book);
-		Task DeleteBook(string isbn);
+		Task<IEnumerable<Book>> Get();
+		Task<Book> Get(string isbn);
+		bool Exists(string isbn);
+		Task Create(Book book);
+		Task Update(Book book);
+		Task Delete(string isbn);
 	}
 }
