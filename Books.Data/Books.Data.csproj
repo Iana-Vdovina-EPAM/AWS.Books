@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Books.Data.Contracts\Books.Data.Contracts.csproj" />
+    <ProjectReference Include="..\Books.Exceptions\Books.Exceptions.csproj" />
   </ItemGroup>
 
 </Project>

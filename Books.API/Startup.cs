@@ -40,6 +40,12 @@ namespace Books.API
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
+				app.UseEndpoints(endpoints =>
+				{
+					endpoints.MapControllerRoute(
+						name: "default",
+						pattern: "{controller=Test}/{action=Check}");
+				});
 			});
 		}
 	}
