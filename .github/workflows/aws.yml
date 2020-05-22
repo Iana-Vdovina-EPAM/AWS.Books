@@ -60,6 +60,7 @@ jobs:
         dotnet tool update -g Amazon.Lambda.Tools
     - name: Deploy Lambda
       id: deploy-lambda
-      run:
-        dotnet lambda deploy-function --function-name upload-s3-storage-function
+      run: |
+        cd "Books.Lambda"
+        dotnet lambda deploy-function --function-name upload-s3-storage-function 
     
