@@ -50,7 +50,7 @@ jobs:
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
-        service: service-10
+        service: service-20
         cluster: cluster-3
         wait-for-service-stability: true
     - name: Install Amazon.Lambda.Tools
