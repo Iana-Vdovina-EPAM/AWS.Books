@@ -46,7 +46,6 @@ jobs:
         task-definition: task-definition.json
         container-name: container-1
         image: ${{ steps.build-image.outputs.image }}
-
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
@@ -54,9 +53,12 @@ jobs:
         service: service-6
         cluster: cluster-3
         wait-for-service-stability: true
+    - name: install Amazon.Lambda.Tools
+      id: install-tools
+      run:
+        dotnet tool install -g Amazon.Lambda.Tools
     - name: Deploy Lambda
       id: deploy-lambda
       run:
-        dotnet tool install -g Amazon.Lambda.Tools
         dotnet lambda deploy-function --function-name upload-s3-storage-function
     
